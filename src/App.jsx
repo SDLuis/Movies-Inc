@@ -1,14 +1,18 @@
-import { useState } from "react"
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Home from './home/home'
+import Details from './home/details';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="h-screen w-full flex flex-col items-center bg-[#121212] text-[#f2f2f2]">
-      <div className="w-[1000px] flex flex-col items-center py-10">
-      <p className="text-2xl font-sans font-medium">Movies Inc</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/movie/:ID/details' element={<Details />} />
+        {/* <Route path='/:rest*' element={<NotFoundComponent />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
