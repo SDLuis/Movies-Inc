@@ -6,6 +6,7 @@ import Navbar from './components/navbar';
 import Home from './pages/home';
 import Details from './pages/details';
 import Favorites from './pages/favorites';
+import Error404 from './components/404';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/movie/:ID/details' element={<Details />} />
             <Route path='/favorites' element={<Favorites />} />
-            {/* <Route path='/:rest*' element={<NotFoundComponent />} /> */}
+            <Route path='/:rest*' element={<Error404 />} />
           </Routes>
         </BrowserRouter>
       </div>
