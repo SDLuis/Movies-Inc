@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { getNowPlayingMovies } from '../services/movies.service';
 
 export default function useMovies() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-  const [errorHandler, setErrorHandler] = useState(null);
+  const [loading, serLoading] = useState(true);
 
   useEffect(() => {
     getNowPlayingMovies()
       .then(({ data }) => setNowPlayingMovies(data))
-      .catch((err) => setErrorHandler(err));
+      .catch((err) => toast.error(err))
+      .finally(() => serLoading(false))
   }, []);
 
-  return { nowPlayingMovies };
+  return { nowPlayingMovies, loading };
 }

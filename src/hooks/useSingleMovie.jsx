@@ -15,13 +15,16 @@ export default function useSingleMovie() {
   const [singleMovie, setSingleMovie] = useState([]);
   const [credits, setCredits] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [loading, serLoading] = useState(true);
 
   const [errorHandler, setErrorHandler] = useState(null);
 
   useEffect(() => {
+    serLoading(true)
     getSingleMovie({ ID })
       .then(({ data }) => setSingleMovie(data))
-      .catch((err) => setErrorHandler(err));
+      .catch((err) => setErrorHandler(err))
+      .finally(() => serLoading(false))
   }, [ID]);
 
   useEffect(() => {
@@ -45,5 +48,5 @@ export default function useSingleMovie() {
           .catch((err) => toast.error(err))
       : null;
   };
-  return { singleMovie, credits, RateMovie, errorHandler, similarMovies };
+  return { singleMovie, credits, RateMovie, errorHandler, similarMovies, loading };
 }
