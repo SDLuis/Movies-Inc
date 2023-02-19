@@ -19,7 +19,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/movie/:ID/details' element={<Details />} />
             <Route path='/favorites' element={<Favorites />} />
-            <Route path='/:rest*' element={<Error404 />} />
+            <Route path='/:rest*/' element={<Error404 />} />
           </Routes>
         </BrowserRouter>
       </div>

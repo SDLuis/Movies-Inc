@@ -23,7 +23,7 @@ export default function MovieDetails({ movie, credits, RateMovie, handleFavorite
         </div>
         <div className='flex-1 flex flex-col gap-5 overflow-hidden'>
           <div className='w-full flex flex-col lg:flex-row lg:items-center gap-4 justify-between '>
-            <p className='text-4xl font-semibold'>{movie.title}</p>
+            <p className='movieTitle text-4xl font-semibold'>{movie.title}</p>
             <Rate RateMovie={RateMovie} />
           </div>
           <div className='w-full flex flex-col lg:flex-row lg:items-center justify-between'>
@@ -31,7 +31,7 @@ export default function MovieDetails({ movie, credits, RateMovie, handleFavorite
               <p className='text-lg opacity-90'>{movie.release_date}</p>
               <div className='flex gap-5 lg:gap-8'>
                 {genres?.map(({ id, name }) => (
-                  <p key={id} className='opacity-90 list-item'>
+                  <p key={id} className='movieGenre opacity-90 list-item'>
                     {name}
                   </p>
                 ))}
@@ -42,13 +42,13 @@ export default function MovieDetails({ movie, credits, RateMovie, handleFavorite
               </p>
             </div>
             <div>
-              <button onClick={() => handleFavorites({ movie })}>
+              <button className='favorite' onClick={() => handleFavorites({ movie })}>
                 <Favorite favorite={favorite} />
               </button>
             </div>
           </div>
           <div className='flex flex-col gap-2'>
-            <p className='text-xl font-medium'>Description</p>
+            <p className='movieDescription text-xl font-medium'>Description</p>
             <p className='text-lg'>{movie.overview}</p>
           </div>
           <p className='text-4xl font-semibold'>Casting</p>

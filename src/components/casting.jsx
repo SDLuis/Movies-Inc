@@ -4,7 +4,7 @@ export default function Casting({ actor }) {
   const IMG_API_URL = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
 
   return (
-    <div className='min-w-[150px] p-2 flex flex-col'>
+    <div className='movieCast min-w-[150px] p-2 flex flex-col'>
       <img
         className='min-w-[100px] object-cover rounded-md'
         src={

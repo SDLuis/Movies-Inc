@@ -2,7 +2,7 @@ export const Star = ({ rate, RateMovie }) => {
   return (
     <svg
       onClick={() => RateMovie({ rate }) }
-      className='text-gray-600 cursor-pointer peer peer-hover:text-yellow-400 hover:text-yellow-400 duration-100 '
+      className='rate text-gray-600 cursor-pointer peer peer-hover:text-yellow-400 hover:text-yellow-400 duration-100 '
       width='23'
       height='23'
       xmlns='http://www.w3.org/2000/svg'

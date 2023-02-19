@@ -6,7 +6,7 @@ export default function Movie({ movie }) {
 
   return (
     <Link to={`/movie/${movie.id}/details`}>
-      <div className='w-48 h-96 flex flex-col items-start p-2 rounded-md gap-2'>
+      <div className='movie w-48 h-96 flex flex-col items-start p-2 rounded-md gap-2'>
         <div className='w-full flex justify-center'>
           <img
             className='w-full object-cover rounded-md'
@@ -15,7 +15,7 @@ export default function Movie({ movie }) {
           />
         </div>
         <div className='w-full'>
-          <p className='text-xl font-medium'>{movie.title}</p>
+          <p className='movieTitle text-xl font-medium'>{movie.title}</p>
           <div className='flex justify-between items-center'>
             <p className='opacity-60 text-xl'>{movie.release_date}</p>
             <p className='text-xl opacity-80'>{movie?.vote_average?.toFixed(1)}</p>
