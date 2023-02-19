@@ -1,9 +1,10 @@
 import { StarYellow } from './icons/star';
+import { Favorite } from './icons/favorite';
 import Rate from './rate';
 import Casting from './casting';
 import SimilarMovies from './similarMovies';
 
-export default function MovieDetails({ movie, credits, RateMovie }) {
+export default function MovieDetails({ movie, credits, RateMovie, handleFavorites, favorite }) {
   const genres = movie?.genres?.map((genres) => genres);
   const IMG_API_URL = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
   const acting = credits?.cast?.filter(
@@ -25,19 +26,26 @@ export default function MovieDetails({ movie, credits, RateMovie }) {
             <p className='text-4xl font-semibold'>{movie.title}</p>
             <Rate RateMovie={RateMovie} />
           </div>
-          <div className='flex flex-col lg:flex-row gap-5 lg:gap-8 lg:items-center'>
-            <p className='text-lg opacity-90'>{movie.release_date}</p>
-            <div className='flex gap-5 lg:gap-8'>
-              {genres?.map(({ id, name }) => (
-                <p key={id} className='opacity-90 list-item'>
-                  {name}
-                </p>
-              ))}
+          <div className='w-full flex flex-col lg:flex-row lg:items-center justify-between'>
+            <div className='w-full flex flex-col lg:flex-row gap-5 lg:gap-8 lg:items-center'>
+              <p className='text-lg opacity-90'>{movie.release_date}</p>
+              <div className='flex gap-5 lg:gap-8'>
+                {genres?.map(({ id, name }) => (
+                  <p key={id} className='opacity-90 list-item'>
+                    {name}
+                  </p>
+                ))}
+              </div>
+              <p className='text-lg opacity-90 flex items-center gap-2'>
+                {movie?.vote_average?.toFixed(1)}
+                <StarYellow />
+              </p>
             </div>
-            <p className='text-lg opacity-90 flex items-center gap-2'>
-              {movie?.vote_average?.toFixed(1)}
-              <StarYellow />
-            </p>
+            <div>
+              <button onClick={() => handleFavorites({ movie })}>
+                <Favorite favorite={favorite} />
+              </button>
+            </div>
           </div>
           <div className='flex flex-col gap-2'>
             <p className='text-xl font-medium'>Description</p>
