@@ -1,10 +1,7 @@
 import useMovies from '../hooks/useMovies';
 import Movie from '../components/movie';
 
-function NowPlaying() {
-  const {
-    nowPlayingMovies: { results },
-  } = useMovies();
+function NowPlaying({ results }) {
   const resultsSorted = results?.sort((x, y) => x.title.localeCompare(y.title));
 
   return (
