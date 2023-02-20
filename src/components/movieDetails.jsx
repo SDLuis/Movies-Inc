@@ -4,12 +4,8 @@ import Rate from './rate';
 import Casting from './casting';
 import SimilarMovies from './similarMovies';
 
-export default function MovieDetails({ movie, credits, RateMovie, handleFavorites, favorite }) {
-  const genres = movie?.genres?.map((genres) => genres);
+export default function MovieDetails({ movie, cast, RateMovie, handleFavorites, favorite }) {
   const IMG_API_URL = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
-  const acting = credits?.cast?.filter(
-    (person) => person.known_for_department === 'Acting'
-  );
 
   return (
     <div className='w-[90%] min-h-screen bg-gray-800 rounded-md overflow-hidden'>
@@ -30,7 +26,7 @@ export default function MovieDetails({ movie, credits, RateMovie, handleFavorite
             <div className='w-full flex flex-col lg:flex-row gap-5 lg:gap-8 lg:items-center'>
               <p className='text-lg opacity-90'>{movie.release_date}</p>
               <div className='flex gap-5 lg:gap-8'>
-                {genres?.map(({ id, name }) => (
+                {movie?.genres?.map(({ id, name }) => (
                   <p key={id} className='movieGenre opacity-90 list-item'>
                     {name}
                   </p>
@@ -53,7 +49,7 @@ export default function MovieDetails({ movie, credits, RateMovie, handleFavorite
           </div>
           <p className='text-4xl font-semibold'>Casting</p>
           <div className='w-full overflow-x-scroll flex'>
-            {acting?.map((actor) => (
+            {cast?.map((actor) => (
               <Casting key={actor.id} actor={actor} />
             ))}
           </div>

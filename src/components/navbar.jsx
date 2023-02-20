@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { FavoriteList } from "./icons/favorite"
+
 export default function Navbar() {
   return (
     <div className='w-full h-16 flex items-center justify-between p-4 mb-5 bg-gray-800'>

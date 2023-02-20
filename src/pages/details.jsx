@@ -4,7 +4,7 @@ import MovieDetails from '../components/movieDetails';
 import Loading from '../components/loading';
 
 export default function Details() {
-  const { singleMovie, credits, RateMovie, loading } = useSigleMovie();
+  const { singleMovie, cast, RateMovie, loading } = useSigleMovie();
   const { handleFavorites, favorite } = useFavoriteMovies(singleMovie?.id)
 
   if (loading) return <div className='h-[60vh] grid place-items-center'><Loading /></div>
@@ -14,7 +14,7 @@ export default function Details() {
     <div className='w-full min-h-screen flex justify-center items-center bg-[#121212] text-[#f2f2f2]'>
       <MovieDetails
         movie={singleMovie}
-        credits={credits}
+        cast={cast}
         RateMovie={RateMovie}
         handleFavorites={handleFavorites}
         favorite={favorite}
