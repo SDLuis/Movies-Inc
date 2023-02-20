@@ -9,7 +9,7 @@ export default function useMovies() {
   useEffect(() => {
     getNowPlayingMovies()
       .then(({ data }) => setNowPlayingMovies(data))
-      .catch((err) => toast.error(err))
+      .catch((err) => toast.error(err.status_message))
       .finally(() => serLoading(false))
   }, []);
 
